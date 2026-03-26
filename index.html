@@ -1356,6 +1356,83 @@
 
   tr:hover td { background: rgba(255,255,255,0.02); }
 
+  /* ===== ORDER CARDS (mobile) ===== */
+  .order-cards { display: none; }
+
+  .order-card-mobile {
+    background: #222;
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 10px;
+    padding: 1.2rem;
+    margin-bottom: 1rem;
+  }
+
+  .order-card-mobile-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.8rem;
+  }
+
+  .order-card-mobile-id {
+    font-family: 'Playfair Display', serif;
+    color: var(--gold);
+    font-size: 1.1rem;
+    font-weight: 700;
+  }
+
+  .order-card-mobile-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    font-size: 0.82rem;
+    color: rgba(255,255,255,0.7);
+    margin-bottom: 0.5rem;
+  }
+
+  .order-card-mobile-row i {
+    color: var(--gold);
+    width: 14px;
+    margin-top: 2px;
+    flex-shrink: 0;
+  }
+
+  .order-card-mobile-total {
+    font-size: 1rem;
+    color: var(--gold);
+    font-weight: 700;
+    font-family: 'Playfair Display', serif;
+    margin: 0.8rem 0;
+  }
+
+  .order-card-mobile-actions {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    margin-top: 0.8rem;
+    padding-top: 0.8rem;
+    border-top: 1px solid rgba(255,255,255,0.07);
+  }
+
+  .order-card-mobile-actions .action-btn {
+    flex: 1;
+    min-width: 80px;
+    text-align: center;
+    padding: 8px 10px;
+    font-size: 0.72rem;
+  }
+
+  .btn-deliver {
+    background: rgba(46,204,113,0.12) !important;
+    border-color: rgba(46,204,113,0.3) !important;
+    color: #2ecc71 !important;
+  }
+
+  @media (max-width: 768px) {
+    .orders-table-wrap { display: none; }
+    .order-cards { display: block; }
+  }
+
   .status-badge {
     display: inline-flex;
     align-items: center;
@@ -1816,7 +1893,7 @@
         <div class="contact-icon"><i class="fas fa-envelope"></i></div>
         <div class="contact-item-content">
           <div class="contact-item-label">Email</div>
-          <div class="contact-item-value" id="contactEmail">contact@lesastuces.sn</div>
+          <div class="contact-item-value" id="contactEmail"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="4b2824253f2a283f0b272e382a383f3e282e38653825">[email&#160;protected]</a></div>
         </div>
       </div>
       <div class="social-links" id="socialLinks">
@@ -2058,7 +2135,9 @@
           </select>
         </div>
       </div>
-      <div class="admin-table-container">
+
+      <!-- TABLE desktop -->
+      <div class="admin-table-container orders-table-wrap">
         <table>
           <thead>
             <tr>
@@ -2076,6 +2155,11 @@
             <tr><td colspan="8" style="text-align:center;color:rgba(255,255,255,0.3);padding:2rem;">Aucune commande</td></tr>
           </tbody>
         </table>
+      </div>
+
+      <!-- CARDS mobile -->
+      <div class="order-cards" id="allOrdersCards">
+        <p style="text-align:center;color:rgba(255,255,255,0.3);padding:2rem;">Aucune commande</p>
       </div>
     </div>
 
@@ -2202,7 +2286,7 @@
   </div>
 </div>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 // ===== DATA =====
 let menuData = {
   bar: [
@@ -2521,28 +2605,32 @@ function updateAdminStats() {
   document.getElementById('statReviews').textContent = reviews.length;
 }
 
+function renderOrderCard(o) {
+  return `
+    <div class="order-card-mobile">
+      <div class="order-card-mobile-top">
+        <div class="order-card-mobile-id">#${o.id}</div>
+        <span class="status-badge status-${o.status}">${getStatusLabel(o.status)}</span>
+      </div>
+      <div class="order-card-mobile-row"><i class="fas fa-user"></i><span>${o.name}</span></div>
+      <div class="order-card-mobile-row"><i class="fas fa-phone"></i><span>${o.phone}</span></div>
+      ${o.address ? `<div class="order-card-mobile-row"><i class="fas fa-map-marker-alt"></i><span>${o.address}</span></div>` : ''}
+      <div class="order-card-mobile-row"><i class="fas fa-utensils"></i><span>${o.items ? o.items.map(i => i.emoji+' '+i.name+' x'+i.qty).join(' · ') : '-'}</span></div>
+      ${o.notes ? `<div class="order-card-mobile-row"><i class="fas fa-sticky-note"></i><span style="font-style:italic;">${o.notes}</span></div>` : ''}
+      <div class="order-card-mobile-total">Total : ${o.total ? o.total.toLocaleString() + ' FCFA' : '-'}</div>
+      <div class="order-card-mobile-actions">
+        <button class="action-btn" onclick="updateOrderStatus(${o.id},'confirmed')">✓ Confirmer</button>
+        <button class="action-btn" onclick="updateOrderStatus(${o.id},'preparing')">🍳 Préparer</button>
+        <button class="action-btn btn-deliver" onclick="updateOrderStatus(${o.id},'delivered')">📦 Livré</button>
+      </div>
+      <div style="font-size:0.7rem;color:rgba(255,255,255,0.3);margin-top:0.5rem;">${o.date}</div>
+    </div>`;
+}
+
 function renderOrdersTable() {
   const tbody = document.getElementById('recentOrdersTable');
   const allTbody = document.getElementById('allOrdersTable');
-
-  const render = (orders, max) => orders.slice(0, max).map(o => `
-    <tr>
-      <td style="color:var(--gold);font-weight:700;">#${o.id}</td>
-      <td>${o.name}</td>
-      ${o.phone !== undefined ? `<td>${o.phone}</td>` : ''}
-      <td>${o.items ? o.items.map(i => `${i.emoji}${i.name}`).join(', ').substring(0,40)+'...' : '-'}</td>
-      <td style="color:var(--gold);font-weight:700;">${o.total ? o.total.toLocaleString() + 'F' : '-'}</td>
-      ${o.address !== undefined ? `<td style="font-size:0.8rem;">${o.address || 'Sur place'}</td>` : ''}
-      <td><span class="status-badge status-${o.status}">${getStatusLabel(o.status)}</span></td>
-      <td>
-        <div style="display:flex;gap:4px;flex-wrap:wrap;">
-          ${o.status !== 'confirmed' ? `<button class="action-btn" onclick="updateOrderStatus(${o.id},'confirmed')">Confirmer</button>` : ''}
-          ${o.status !== 'preparing' ? `<button class="action-btn" onclick="updateOrderStatus(${o.id},'preparing')">Préparer</button>` : ''}
-          ${o.status !== 'delivered' ? `<button class="action-btn" onclick="updateOrderStatus(${o.id},'delivered')">Livré</button>` : ''}
-        </div>
-      </td>
-    </tr>
-  `).join('') || '<tr><td colspan="8" style="text-align:center;color:rgba(255,255,255,0.3);padding:2rem;">Aucune commande</td></tr>';
+  const allCards = document.getElementById('allOrdersCards');
 
   if (tbody) tbody.innerHTML = orders.slice(0,5).map(o => `
     <tr>
@@ -2560,7 +2648,7 @@ function renderOrdersTable() {
       <td style="color:var(--gold);font-weight:700;">#${o.id}</td>
       <td>${o.name}</td>
       <td>${o.phone}</td>
-      <td>${o.items ? o.items.map(i => `${i.emoji} ${i.name} x${i.qty}`).join(', ').substring(0,50) : '-'}</td>
+      <td>${o.items ? o.items.map(i => i.emoji+' '+i.name+' x'+i.qty).join(', ').substring(0,50) : '-'}</td>
       <td style="color:var(--gold);font-weight:700;">${o.total ? o.total.toLocaleString() + 'F' : '-'}</td>
       <td style="font-size:0.8rem;">${o.address || 'Sur place'}</td>
       <td><span class="status-badge status-${o.status}">${getStatusLabel(o.status)}</span></td>
@@ -2568,11 +2656,15 @@ function renderOrdersTable() {
         <div style="display:flex;gap:4px;flex-wrap:wrap;">
           <button class="action-btn" onclick="updateOrderStatus(${o.id},'confirmed')">✓</button>
           <button class="action-btn" onclick="updateOrderStatus(${o.id},'preparing')">🍳</button>
-          <button class="action-btn" onclick="updateOrderStatus(${o.id},'delivered')" style="background:rgba(46,204,113,0.1);border-color:rgba(46,204,113,0.3);color:#2ecc71;">📦</button>
+          <button class="action-btn" style="background:rgba(46,204,113,0.1);border-color:rgba(46,204,113,0.3);color:#2ecc71;" onclick="updateOrderStatus(${o.id},'delivered')">📦</button>
         </div>
       </td>
     </tr>
   `).join('') || '<tr><td colspan="8" style="text-align:center;color:rgba(255,255,255,0.3);padding:2rem;">Aucune commande</td></tr>';
+
+  if (allCards) allCards.innerHTML = orders.length > 0
+    ? orders.map(o => renderOrderCard(o)).join('')
+    : '<p style="text-align:center;color:rgba(255,255,255,0.3);padding:2rem;">Aucune commande</p>';
 }
 
 function getStatusLabel(s) {
@@ -2724,14 +2816,4 @@ document.getElementById('orderModal').addEventListener('click', function(e) {
   if (e.target === this) closeOrderModal();
 });
 document.getElementById('addItemModal').addEventListener('click', function(e) {
-  if (e.target === this) closeAddItemModal();
-});
-document.getElementById('adminLogin').addEventListener('click', function(e) {
-  if (e.target === this) closeAdminLogin();
-});
-
-// Init star rating
-setRating(5);
-</script>
-</body>
-</html>
+  if
