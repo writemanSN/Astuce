@@ -2286,7 +2286,7 @@
   </div>
 </div>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
 // ===== DATA =====
 let menuData = {
   bar: [
@@ -2816,4 +2816,14 @@ document.getElementById('orderModal').addEventListener('click', function(e) {
   if (e.target === this) closeOrderModal();
 });
 document.getElementById('addItemModal').addEventListener('click', function(e) {
-  if
+  if (e.target === this) closeAddItemModal();
+});
+document.getElementById('adminLogin').addEventListener('click', function(e) {
+  if (e.target === this) closeAdminLogin();
+});
+
+// Init star rating
+setRating(5);
+</script>
+</body>
+</html>
