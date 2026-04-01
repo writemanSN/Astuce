@@ -3,7 +3,15 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Traiteur Les Astuces - Restaurant Ziguinchor</title>
+<title>Restaurant Traiteur Les Astuces — Ziguinchor</title>
+<meta name="theme-color" content="#C9A84C">
+<meta name="description" content="Restaurant Traiteur Les Astuces — Saveurs authentiques à Ziguinchor">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Les Astuces">
+<meta name="mobile-web-app-capable" content="yes">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%231A1208'/><text y='72' x='50' text-anchor='middle' font-size='62'>🍽️</text></svg>">
+<link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%23C9A84C'/><text y='72' x='50' text-anchor='middle' font-size='62'>🍽️</text></svg>">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Cormorant+Garamond:wght@300;400;600&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <style>
@@ -1633,7 +1641,7 @@
     <div class="nav-logo-icon">🍽️</div>
     <div>
       <div class="nav-logo-text">Les Astuces</div>
-      <div class="nav-logo-sub">Restaurant Traiteur</div>
+      <div class="nav-logo-sub">Traiteur • Ziguinchor</div>
     </div>
   </a>
   <ul class="nav-links" id="navLinks">
@@ -1644,7 +1652,10 @@
     <li><a href="#contact">Contact</a></li>
     <li><a href="#" class="btn-order-nav" onclick="openOrderModal(event)"><i class="fas fa-utensils"></i> Commander</a></li>
   </ul>
-  <div style="display:flex;gap:1rem;align-items:center;">
+  <div style="display:flex;gap:0.6rem;align-items:center;">
+    <button id="pwaInstallBtn" onclick="installApp()" style="display:none;background:linear-gradient(135deg,var(--gold),var(--gold-dark));color:var(--dark);padding:6px 14px;border-radius:4px;font-size:0.72rem;cursor:pointer;font-family:Montserrat;letter-spacing:1px;border:none;font-weight:600;">
+      <i class="fas fa-download"></i> Installer
+    </button>
     <button onclick="openAdminLogin()" style="background:none;border:1px solid rgba(201,168,76,0.3);color:var(--gold);padding:6px 14px;border-radius:4px;font-size:0.72rem;cursor:pointer;font-family:Montserrat;letter-spacing:1px;">
       <i class="fas fa-lock"></i> Admin
     </button>
@@ -1659,9 +1670,9 @@
   <div class="hero-bg"></div>
   <div class="hero-pattern"></div>
   <div class="hero-content">
-    <div class="hero-badge"><i class="fas fa-star"></i> Restaurant & Traiteur à Ziguinchor</div>
+    <div class="hero-badge"><i class="fas fa-star"></i> Traiteur à Ziguinchor</div>
     <h1 class="hero-title">
-      Traiteur
+      Restaurant Traiteur
       <span>Les Astuces</span>
     </h1>
     <p class="hero-subtitle">Saveurs authentiques • Cuisine raffinée • Art culinaire</p>
@@ -1726,8 +1737,8 @@
     </div>
     <div class="about-content">
       <div class="section-eyebrow">Notre histoire</div>
-      <h2>Une Passion pour la<br>Gastronomie Africaine</h2>
-      <p>Bienvenue chez <strong>Traiteur Les Astuces</strong>, votre restaurant de référence à Ziguinchor. Situé en face du Campus EATA de l'Université Assane Seck, nous sommes le lieu de rendez-vous des gourmets de la région.</p>
+      <h2>Une Passion pour la<br>Gastronomie Africaine & Européenne</h2>
+      <p>Bienvenue chez <strong>Restaurant Traiteur Les Astuces</strong>, votre traiteur de référence à Ziguinchor. Situé en face du Campus EATA de l'Université Assane Seck, nous sommes le lieu de rendez-vous des gourmets de la région.</p>
       <p>Notre équipe de chefs passionnés vous propose une cuisine variée : poissons frais de l'Atlantique, grillades savoureuses, desserts raffinés et une large sélection de boissons locales et importées.</p>
       <div class="about-features">
         <div class="about-feat"><i class="fas fa-check-circle"></i> Service traiteur & événements</div>
@@ -1797,30 +1808,10 @@
     <div class="section-line"></div>
     <p class="section-desc">Soirées, After Work et moments festifs à ne pas manquer</p>
   </div>
-  <div class="events-grid">
-    <div class="event-card">
-      <div class="event-img">🌆 <div class="event-date-badge">Chaque Vendredi</div></div>
-      <div class="event-body">
-        <div class="event-title">After Work Signature</div>
-        <div class="event-desc">Détendez-vous après une longue journée avec notre sélection de planches apéritives et cocktails maison.</div>
-        <div class="event-meta"><span><i class="fas fa-clock"></i>18h – 22h</span><span><i class="fas fa-map-marker-alt"></i>En salle</span></div>
-      </div>
-    </div>
-    <div class="event-card">
-      <div class="event-img">🎉 <div class="event-date-badge">Sur Réservation</div></div>
-      <div class="event-body">
-        <div class="event-title">Soirées Privées & Banquets</div>
-        <div class="event-desc">Organisez vos célébrations : mariages, anniversaires, baptêmes. Notre équipe traiteur s'occupe de tout.</div>
-        <div class="event-meta"><span><i class="fas fa-users"></i>Jusqu'à 200 pers.</span><span><i class="fas fa-phone"></i>Sur devis</span></div>
-      </div>
-    </div>
-    <div class="event-card">
-      <div class="event-img">🍽️ <div class="event-date-badge">Chaque Dimanche</div></div>
-      <div class="event-body">
-        <div class="event-title">Brunch du Dimanche</div>
-        <div class="event-desc">Un buffet copieux pour démarrer le week-end en beauté avec la famille et les amis.</div>
-        <div class="event-meta"><span><i class="fas fa-clock"></i>10h – 14h</span><span><i class="fas fa-tag"></i>3000 FCFA</span></div>
-      </div>
+  <div class="events-grid" id="eventsGrid">
+    <div style="text-align:center;color:var(--text-light);padding:3rem;grid-column:1/-1;font-family:'Cormorant Garamond',serif;font-size:1.1rem;">
+      <i class="fas fa-calendar" style="font-size:2rem;color:var(--gold);display:block;margin-bottom:1rem;"></i>
+      Aucun événement pour le moment.<br>L'admin peut en ajouter depuis l'espace administration.
     </div>
   </div>
 </section>
@@ -1937,8 +1928,8 @@
 <footer>
   <div class="footer-grid">
     <div>
-      <div class="footer-brand-title">🍽️ Traiteur Les Astuces</div>
-      <div class="footer-brand-sub">Restaurant & Traiteur — Ziguinchor</div>
+      <div class="footer-brand-title">🍽️ Restaurant Traiteur Les Astuces</div>
+      <div class="footer-brand-sub">Traiteur & Gastronomie — Ziguinchor</div>
       <p class="footer-brand-text">
         L'art culinaire au cœur de Ziguinchor. Nous vous proposons une cuisine authentique et raffinée, dans un cadre chaleureux, face au campus EATA.
       </p>
@@ -1969,7 +1960,7 @@
     </div>
   </div>
   <div class="footer-bottom">
-    &copy; 2025 Traiteur Les Astuces — Tous droits réservés | Conçu par <span>NEMESIAX</span>
+    &copy; 2025 Restaurant Traiteur Les Astuces — Tous droits réservés | Conçu par <span>NEMESIAX</span>
   </div>
 </footer>
 
@@ -2031,13 +2022,12 @@
     <p>Connexion réservée au propriétaire</p>
     <div class="form-group" style="text-align:left;">
       <label class="admin-form-label" style="color:rgba(255,255,255,0.5);">Identifiant</label>
-      <input class="admin-form-input" id="adminUser" value="admin" placeholder="admin">
+      <input class="admin-form-input" id="adminUser" type="text" placeholder="Identifiant" autocomplete="off">
     </div>
     <div class="form-group" style="text-align:left;">
       <label class="admin-form-label" style="color:rgba(255,255,255,0.5);">Mot de passe</label>
-      <input class="admin-form-input" id="adminPass" type="password" placeholder="••••••••">
+      <input class="admin-form-input" id="adminPass" type="password" placeholder="••••••••" autocomplete="off">
     </div>
-    <p style="font-size:0.72rem;color:rgba(255,255,255,0.3);margin-bottom:1.5rem;">Mot de passe par défaut : <strong style="color:var(--gold)">admin123</strong></p>
     <button class="btn-primary" style="width:100%;" onclick="doAdminLogin()">
       <i class="fas fa-sign-in-alt"></i> Se Connecter
     </button>
@@ -2050,8 +2040,11 @@
 <!-- ADMIN PANEL -->
 <div id="adminPanel">
   <div class="admin-nav">
-    <div class="admin-nav-title">🍽️ Les Astuces — Administration</div>
+    <div class="admin-nav-title">🍽️ Restaurant Traiteur Les Astuces — Administration</div>
     <div class="admin-nav-actions">
+      <button onclick="requestNotificationPermission()" id="notifBtn" style="background:rgba(201,168,76,0.1);border:1px solid rgba(201,168,76,0.3);color:var(--gold);padding:6px 14px;border-radius:4px;font-size:0.72rem;cursor:pointer;font-family:Montserrat;" title="Activer les notifications commandes">
+        <i class="fas fa-bell"></i> Notifications
+      </button>
       <span style="color:rgba(255,255,255,0.4);font-size:0.8rem;"><i class="fas fa-circle" style="color:#2ecc71;font-size:0.5rem;"></i> En ligne</span>
       <button onclick="closeAdmin()" class="action-btn"><i class="fas fa-external-link-alt"></i> Voir le site</button>
       <button onclick="closeAdmin()" style="background:rgba(231,76,60,0.15);border:1px solid rgba(231,76,60,0.3);color:#e74c3c;padding:6px 14px;border-radius:4px;font-size:0.75rem;cursor:pointer;font-family:Montserrat;">
@@ -2187,30 +2180,12 @@
     <div class="admin-section" id="admin-events-admin">
       <div class="admin-section-header">
         <h2>Gestion des Événements</h2>
-        <button class="btn-primary" style="font-size:0.8rem;padding:8px 18px;" onclick="showToast('Fonctionnalité d\'ajout d\'événement activée !')">
-          <i class="fas fa-plus"></i> Ajouter
+        <button class="btn-primary" style="font-size:0.8rem;padding:8px 18px;" onclick="openAddEventModal()">
+          <i class="fas fa-plus"></i> Ajouter un Événement
         </button>
       </div>
-      <div class="admin-table-container">
-        <table>
-          <thead><tr><th>Événement</th><th>Date</th><th>Heure</th><th>Type</th><th>Actions</th></tr></thead>
-          <tbody>
-            <tr>
-              <td>After Work Signature</td>
-              <td>Chaque Vendredi</td>
-              <td>18h – 22h</td>
-              <td><span class="status-badge status-confirmed">Récurrent</span></td>
-              <td><button class="action-btn">Modifier</button></td>
-            </tr>
-            <tr>
-              <td>Brunch du Dimanche</td>
-              <td>Chaque Dimanche</td>
-              <td>10h – 14h</td>
-              <td><span class="status-badge status-confirmed">Récurrent</span></td>
-              <td><button class="action-btn">Modifier</button></td>
-            </tr>
-          </tbody>
-        </table>
+      <div id="eventsAdminList">
+        <p style="text-align:center;color:rgba(255,255,255,0.3);padding:2rem;">Aucun événement. Ajoutez-en un !</p>
       </div>
     </div>
 
@@ -2281,6 +2256,46 @@
       </div>
       <button class="btn-primary" style="width:100%;" onclick="addMenuItem()">
         <i class="fas fa-plus"></i> Ajouter au Menu
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- ADD EVENT MODAL -->
+<div class="modal-overlay" id="addEventModal">
+  <div class="modal" style="max-width:480px;">
+    <div class="modal-header">
+      <div class="modal-title">📅 Ajouter un Événement</div>
+      <button class="modal-close" onclick="closeAddEventModal()">✕</button>
+    </div>
+    <div class="modal-body">
+      <input type="hidden" id="editingEventId">
+      <div class="form-group">
+        <label class="form-label">Titre *</label>
+        <input class="form-input" id="newEvtTitle" placeholder="Ex: After Work Spécial">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Description</label>
+        <textarea class="form-textarea" id="newEvtDesc" placeholder="Décrivez l'événement..."></textarea>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Date</label>
+        <input class="form-input" id="newEvtDate" placeholder="Ex: Chaque Vendredi ou 15 Août 2025">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Heure</label>
+        <input class="form-input" id="newEvtTime" placeholder="Ex: 18h – 22h">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Info supplémentaire</label>
+        <input class="form-input" id="newEvtMeta" placeholder="Ex: En salle, Sur devis, 3000 FCFA">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Émoji</label>
+        <input class="form-input" id="newEvtEmoji" placeholder="Ex: 🌆" style="font-size:1.4rem;" value="🎉">
+      </div>
+      <button class="btn-primary" style="width:100%;" onclick="saveNewEvent()">
+        <i class="fas fa-save"></i> Publier l'Événement
       </button>
     </div>
   </div>
@@ -2528,6 +2543,8 @@ function placeOrder() {
   updateAdminStats();
   renderOrdersTable();
   showToast('🎉 Commande passée avec succès ! Nous vous contactons bientôt.');
+  // Notifier l'admin immédiatement
+  sendOrderNotification(order);
 }
 
 // ===== REVIEWS =====
@@ -2569,15 +2586,20 @@ function openAdminLogin() { document.getElementById('adminLogin').classList.add(
 function closeAdminLogin() { document.getElementById('adminLogin').classList.remove('open'); }
 
 function doAdminLogin() {
+  const user = document.getElementById('adminUser').value.trim();
   const pass = document.getElementById('adminPass').value;
-  if (pass === 'admin123' || pass === 'admin') {
+  const validUser = atob('YWRtaW4=');       // admin
+  const validPass = atob('QXN0dWNlczIwMjY='); // Astuces2026
+  if (user === validUser && pass === validPass) {
     closeAdminLogin();
     document.getElementById('adminPanel').classList.add('open');
     updateAdminStats();
     renderOrdersTable();
     renderAdminMenuGrid(adminMenuCurrent);
+    renderEventsAdmin();
+    requestNotificationPermission();
   } else {
-    showToast('❌ Mot de passe incorrect');
+    showToast('❌ Identifiant ou mot de passe incorrect');
   }
 }
 
@@ -2824,6 +2846,239 @@ document.getElementById('adminLogin').addEventListener('click', function(e) {
 
 // Init star rating
 setRating(5);
+
+// ===== EVENTS (CRUD complet) =====
+let events = [];
+try { events = JSON.parse(localStorage.getItem('les_astuces_events') || '[]'); } catch(e) { events = []; }
+
+function renderEvents() {
+  const grid = document.getElementById('eventsGrid');
+  if (!grid) return;
+  if (events.length === 0) {
+    grid.innerHTML = `<div style="text-align:center;color:var(--text-light);padding:3rem;grid-column:1/-1;font-family:'Cormorant Garamond',serif;font-size:1.1rem;">
+      <i class="fas fa-calendar" style="font-size:2rem;color:var(--gold);display:block;margin-bottom:1rem;"></i>
+      Aucun événement pour le moment.<br>L'admin peut en ajouter depuis l'espace administration.
+    </div>`;
+    return;
+  }
+  grid.innerHTML = events.map(evt => `
+    <div class="event-card">
+      <div class="event-img">${evt.emoji || '🎉'} <div class="event-date-badge">${evt.date || ''}</div></div>
+      <div class="event-body">
+        <div class="event-title">${evt.title}</div>
+        <div class="event-desc">${evt.desc || ''}</div>
+        <div class="event-meta">
+          ${evt.time ? `<span><i class="fas fa-clock"></i>${evt.time}</span>` : ''}
+          ${evt.meta ? `<span><i class="fas fa-info-circle"></i>${evt.meta}</span>` : ''}
+        </div>
+      </div>
+    </div>
+  `).join('');
+}
+
+function renderEventsAdmin() {
+  const container = document.getElementById('eventsAdminList');
+  if (!container) return;
+  if (events.length === 0) {
+    container.innerHTML = '<p style="text-align:center;color:rgba(255,255,255,0.3);padding:2rem;">Aucun événement. Cliquez sur Ajouter !</p>';
+    return;
+  }
+  container.innerHTML = `<div class="admin-table-container"><table>
+    <thead><tr><th>Émoji</th><th>Titre</th><th>Date</th><th>Heure</th><th>Info</th><th>Actions</th></tr></thead>
+    <tbody>
+      ${events.map((evt, idx) => `
+        <tr>
+          <td style="font-size:1.5rem;">${evt.emoji || '🎉'}</td>
+          <td style="color:var(--gold);font-weight:600;">${evt.title}</td>
+          <td>${evt.date || '—'}</td>
+          <td>${evt.time || '—'}</td>
+          <td>${evt.meta || '—'}</td>
+          <td>
+            <div style="display:flex;gap:6px;">
+              <button class="action-btn" onclick="editEvent(${idx})"><i class="fas fa-edit"></i></button>
+              <button class="action-btn" style="background:rgba(231,76,60,0.1);border-color:rgba(231,76,60,0.3);color:#e74c3c;" onclick="deleteEvent(${idx})"><i class="fas fa-trash"></i></button>
+            </div>
+          </td>
+        </tr>
+      `).join('')}
+    </tbody>
+  </table></div>`;
+}
+
+function openAddEventModal() {
+  document.getElementById('editingEventId').value = '';
+  document.getElementById('newEvtTitle').value = '';
+  document.getElementById('newEvtDesc').value = '';
+  document.getElementById('newEvtDate').value = '';
+  document.getElementById('newEvtTime').value = '';
+  document.getElementById('newEvtMeta').value = '';
+  document.getElementById('newEvtEmoji').value = '🎉';
+  document.getElementById('addEventModal').classList.add('open');
+}
+
+function closeAddEventModal() {
+  document.getElementById('addEventModal').classList.remove('open');
+}
+
+function editEvent(idx) {
+  const evt = events[idx];
+  document.getElementById('editingEventId').value = idx;
+  document.getElementById('newEvtTitle').value = evt.title || '';
+  document.getElementById('newEvtDesc').value = evt.desc || '';
+  document.getElementById('newEvtDate').value = evt.date || '';
+  document.getElementById('newEvtTime').value = evt.time || '';
+  document.getElementById('newEvtMeta').value = evt.meta || '';
+  document.getElementById('newEvtEmoji').value = evt.emoji || '🎉';
+  document.getElementById('addEventModal').classList.add('open');
+}
+
+function saveNewEvent() {
+  const title = document.getElementById('newEvtTitle').value.trim();
+  if (!title) { showToast('⚠️ Le titre est obligatoire'); return; }
+  const evt = {
+    title,
+    desc:  document.getElementById('newEvtDesc').value.trim(),
+    date:  document.getElementById('newEvtDate').value.trim(),
+    time:  document.getElementById('newEvtTime').value.trim(),
+    meta:  document.getElementById('newEvtMeta').value.trim(),
+    emoji: document.getElementById('newEvtEmoji').value.trim() || '🎉',
+  };
+  const editIdx = document.getElementById('editingEventId').value;
+  if (editIdx !== '') {
+    events[parseInt(editIdx)] = evt;
+    showToast('✓ Événement mis à jour');
+  } else {
+    events.unshift(evt);
+    showToast('✓ Événement publié !');
+  }
+  localStorage.setItem('les_astuces_events', JSON.stringify(events));
+  renderEvents();
+  renderEventsAdmin();
+  closeAddEventModal();
+}
+
+function deleteEvent(idx) {
+  if (confirm('Supprimer cet événement ?')) {
+    events.splice(idx, 1);
+    localStorage.setItem('les_astuces_events', JSON.stringify(events));
+    renderEvents();
+    renderEventsAdmin();
+    showToast('Événement supprimé');
+  }
+}
+
+document.getElementById('addEventModal').addEventListener('click', function(e) {
+  if (e.target === this) closeAddEventModal();
+});
+
+// ===== NOTIFICATIONS COMMANDES =====
+let notifPermission = false;
+
+function requestNotificationPermission() {
+  if (!('Notification' in window)) {
+    showToast('⚠️ Notifications non supportées sur ce navigateur');
+    return;
+  }
+  if (Notification.permission === 'granted') {
+    notifPermission = true;
+    showToast('🔔 Notifications déjà activées !');
+  } else if (Notification.permission !== 'denied') {
+    Notification.requestPermission().then(perm => {
+      notifPermission = perm === 'granted';
+      if (notifPermission) showToast('🔔 Notifications activées ! Vous serez alerté à chaque commande.');
+      else showToast('❌ Notifications refusées');
+    });
+  } else {
+    showToast('❌ Notifications bloquées — autorisez-les dans les paramètres du navigateur');
+  }
+}
+
+function sendOrderNotification(order) {
+  // Vibration mobile (fonctionne même sans permission notif)
+  if (navigator.vibrate) navigator.vibrate([300, 150, 300, 150, 500]);
+  // Notification bureau
+  if (!('Notification' in window)) return;
+  if (Notification.permission !== 'granted') return;
+  try {
+    const notif = new Notification('🛎️ Nouvelle commande — Les Astuces !', {
+      body: `👤 ${order.name} | 📱 ${order.phone}\n🍽️ ${order.items.map(i=>i.name).join(', ')}\n💰 ${order.total.toLocaleString()} FCFA`,
+      icon: "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%23C9A84C'/><text y='72' x='50' text-anchor='middle' font-size='62'>🍽️</text></svg>",
+      requireInteraction: true,
+      tag: 'commande-' + order.id
+    });
+    notif.onclick = () => { window.focus(); notif.close(); };
+  } catch(e) {}
+}
+
+// ===== PWA INSTALL =====
+let deferredInstallPrompt = null;
+
+function installPWAButton() {
+  window.addEventListener('beforeinstallprompt', (e) => {
+    e.preventDefault();
+    deferredInstallPrompt = e;
+    const btn = document.getElementById('pwaInstallBtn');
+    if (btn) btn.style.display = 'inline-flex';
+  });
+  window.addEventListener('appinstalled', () => {
+    showToast('✅ Application installée sur votre appareil !');
+    deferredInstallPrompt = null;
+    const btn = document.getElementById('pwaInstallBtn');
+    if (btn) btn.style.display = 'none';
+  });
+}
+
+function installApp() {
+  if (deferredInstallPrompt) {
+    deferredInstallPrompt.prompt();
+    deferredInstallPrompt.userChoice.then(c => {
+      if (c.outcome === 'accepted') showToast('✅ Installation en cours...');
+      deferredInstallPrompt = null;
+    });
+  } else {
+    showToast('💡 Sur iOS : appuyez sur Partager ↑ puis "Sur l\'écran d\'accueil"');
+  }
+}
+
+// PWA Manifest inline
+(function() {
+  const manifest = {
+    name: "Restaurant Traiteur Les Astuces",
+    short_name: "Les Astuces",
+    description: "Restaurant Traiteur Les Astuces — Ziguinchor",
+    start_url: "./",
+    display: "standalone",
+    background_color: "#1A1208",
+    theme_color: "#C9A84C",
+    icons: [
+      { src: "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 192 192'><rect width='192' height='192' rx='38' fill='%23C9A84C'/><text y='145' x='96' text-anchor='middle' font-size='120'>🍽️</text></svg>", sizes: "192x192", type: "image/svg+xml" },
+      { src: "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'><rect width='512' height='512' rx='100' fill='%23C9A84C'/><text y='390' x='256' text-anchor='middle' font-size='320'>🍽️</text></svg>", sizes: "512x512", type: "image/svg+xml", purpose: "any maskable" }
+    ]
+  };
+  const blob = new Blob([JSON.stringify(manifest)], {type:'application/json'});
+  const url = URL.createObjectURL(blob);
+  const link = document.createElement('link');
+  link.rel = 'manifest';
+  link.href = url;
+  document.head.appendChild(link);
+})();
+
+// Service Worker pour PWA offline
+if ('serviceWorker' in navigator) {
+  const swCode = `
+    const CACHE='les-astuces-v1';
+    self.addEventListener('install',e=>e.waitUntil(caches.open(CACHE).then(c=>c.addAll(['/']))));
+    self.addEventListener('fetch',e=>e.respondWith(caches.match(e.request).then(r=>r||fetch(e.request).catch(()=>caches.match('/')))));
+  `;
+  const blob = new Blob([swCode], {type:'application/javascript'});
+  navigator.serviceWorker.register(URL.createObjectURL(blob)).catch(()=>{});
+}
+
+// Démarrer le bouton d'installation PWA
+installPWAButton();
+// Rendu des événements au démarrage
+renderEvents();
+
 </script>
 </body>
 </html>
