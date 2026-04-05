@@ -912,6 +912,47 @@
 
   .cart-total span:last-child { color: var(--gold); font-family: 'Playfair Display', serif; }
 
+  /* ===== WHATSAPP BUTTON ===== */
+  .btn-whatsapp {
+    background: linear-gradient(135deg, #25D366, #128C7E);
+    color: white;
+    padding: 14px 32px;
+    border-radius: 4px;
+    font-weight: 700;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+    transition: all 0.3s;
+    font-family: 'Montserrat', sans-serif;
+    margin-top: 0.5rem;
+    box-shadow: 0 4px 15px rgba(37,211,102,0.3);
+  }
+
+  .btn-whatsapp:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(37,211,102,0.4);
+    background: linear-gradient(135deg, #2ddf70, #15a87e);
+  }
+
+  .btn-whatsapp i { font-size: 1.2rem; }
+
+  .whatsapp-note {
+    text-align: center;
+    font-size: 0.75rem;
+    color: var(--text-light);
+    margin-top: 0.8rem;
+    font-style: italic;
+  }
+
+  .whatsapp-note i { color: #25D366; margin-right: 4px; }
+
   /* ===== REVIEWS ===== */
   #reviews {
     background: var(--dark);
@@ -1771,43 +1812,36 @@
     <button class="menu-tab" onclick="switchMenu('diner', this)">🌙 Dîner / Fast Food</button>
   </div>
 
-  <!-- BAR -->
   <div class="menu-section active" id="menu-bar">
     <div class="menu-section-title">Le Bar — Boissons & Cocktails</div>
     <div class="menu-grid" id="grid-bar"></div>
   </div>
 
-  <!-- POISSON -->
   <div class="menu-section" id="menu-poisson">
     <div class="menu-section-title">Poissons & Fruits de Mer</div>
     <div class="menu-grid" id="grid-poisson"></div>
   </div>
 
-  <!-- AFTER WORK -->
   <div class="menu-section" id="menu-afterwork">
     <div class="menu-section-title">Carte After Work</div>
     <div class="menu-grid" id="grid-afterwork"></div>
   </div>
 
-  <!-- ENCAS -->
   <div class="menu-section" id="menu-encas">
     <div class="menu-section-title">Nos Encas</div>
     <div class="menu-grid" id="grid-encas"></div>
   </div>
 
-  <!-- REPAS -->
   <div class="menu-section" id="menu-repas">
     <div class="menu-section-title">Nos Repas</div>
     <div class="menu-grid" id="grid-repas"></div>
   </div>
 
-  <!-- DINER -->
   <div class="menu-section" id="menu-diner">
     <div class="menu-section-title">Nos Diner/Fastfood</div>
     <div class="menu-grid" id="grid-diner"></div>
   </div>
 
-  <!-- DESSERTS -->
   <div class="menu-section" id="menu-desserts">
     <div class="menu-section-title">Les Plaisirs Sucrés</div>
     <div class="menu-grid" id="grid-desserts"></div>
@@ -1838,9 +1872,7 @@
     <div class="section-line"></div>
   </div>
 
-  <div class="reviews-grid" id="reviewsContainer">
-    <!-- Reviews loaded by JS -->
-  </div>
+  <div class="reviews-grid" id="reviewsContainer"></div>
 
   <div class="add-review fade-section">
     <h3><i class="fas fa-star" style="color:var(--gold)"></i> Laisser un Avis</h3>
@@ -1884,7 +1916,7 @@
         <div class="contact-icon"><i class="fas fa-phone"></i></div>
         <div class="contact-item-content">
           <div class="contact-item-label">Téléphone</div>
-          <div class="contact-item-value" id="contactPhone">+221 77 000 00 00</div>
+          <div class="contact-item-value" id="contactPhone">+221 78 445 43 43</div>
         </div>
       </div>
       <div class="contact-item">
@@ -1898,7 +1930,7 @@
         <div class="contact-icon"><i class="fas fa-envelope"></i></div>
         <div class="contact-item-content">
           <div class="contact-item-label">Email</div>
-          <div class="contact-item-value" id="contactEmail"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="4b2824253f2a283f0b272e382a383f3e282e38653825">[email&#160;protected]</a></div>
+          <div class="contact-item-value" id="contactEmail">contact@lesastuces.sn</div>
         </div>
       </div>
       <div class="social-links" id="socialLinks">
@@ -2022,9 +2054,16 @@
           <label class="form-label">Instructions Spéciales</label>
           <textarea class="form-textarea" id="orderNotes" placeholder="Allergies, préférences..."></textarea>
         </div>
-        <button class="btn-primary" style="width:100%;" onclick="placeOrder()">
-          <i class="fas fa-check-circle"></i> Confirmer la Commande
+
+        <!-- BOUTON WHATSAPP -->
+        <button class="btn-whatsapp" onclick="placeOrder()">
+          <i class="fab fa-whatsapp"></i>
+          Confirmer & Envoyer sur WhatsApp
         </button>
+        <p class="whatsapp-note">
+          <i class="fab fa-whatsapp"></i>
+          Votre commande sera envoyée directement sur notre WhatsApp pour traitement immédiat
+        </p>
       </div>
     </div>
   </div>
@@ -2145,7 +2184,6 @@
         </div>
       </div>
 
-      <!-- TABLE desktop -->
       <div class="admin-table-container orders-table-wrap">
         <table>
           <thead>
@@ -2166,7 +2204,6 @@
         </table>
       </div>
 
-      <!-- CARDS mobile -->
       <div class="order-cards" id="allOrdersCards">
         <p style="text-align:center;color:rgba(255,255,255,0.3);padding:2rem;">Aucune commande</p>
       </div>
@@ -2219,8 +2256,8 @@
           <input class="admin-form-input" value="Traiteur Les Astuces">
           <label class="admin-form-label">Adresse</label>
           <input class="admin-form-input" value="En face du Campus EATA, Ziguinchor">
-          <label class="admin-form-label">Téléphone</label>
-          <input class="admin-form-input" id="settPhone" value="+221 77 000 00 00">
+          <label class="admin-form-label">Téléphone / WhatsApp commandes</label>
+          <input class="admin-form-input" id="settPhone" value="+221 78 445 43 43">
           <label class="admin-form-label">Email</label>
           <input class="admin-form-input" id="settEmail" value="contact@lesastuces.sn">
           <button class="btn-primary" style="font-size:0.8rem;" onclick="saveSettings()"><i class="fas fa-save"></i> Sauvegarder</button>
@@ -2232,7 +2269,7 @@
           <label class="admin-form-label"><i class="fab fa-instagram" style="color:#e1306c;margin-right:6px;"></i> Instagram</label>
           <input class="admin-form-input" id="settIg" placeholder="https://instagram.com/...">
           <label class="admin-form-label"><i class="fab fa-whatsapp" style="color:#25d366;margin-right:6px;"></i> WhatsApp</label>
-          <input class="admin-form-input" id="settWa" placeholder="+221 77 000 00 00">
+          <input class="admin-form-input" id="settWa" placeholder="+221 78 445 43 43">
           <label class="admin-form-label"><i class="fab fa-tiktok" style="color:white;margin-right:6px;"></i> TikTok</label>
           <input class="admin-form-input" id="settTt" placeholder="@votrecompte">
           <button class="btn-primary" style="font-size:0.8rem;" onclick="saveSocialLinks()"><i class="fas fa-save"></i> Sauvegarder</button>
@@ -2322,6 +2359,9 @@
 </div>
 
 <script>
+// ===== WHATSAPP CONFIG =====
+const WHATSAPP_NUMBER = '221784454343'; // +221 78 445 43 43
+
 // ===== DATA =====
 let menuData = {
   bar: [
@@ -2383,7 +2423,7 @@ let menuData = {
     { id: 73, name: "Dibiterie d'Agneau Sauce Tabaski", price: 4000, desc: "Agneau grillé sauce spéciale tabaski", emoji: "🥩" },
     { id: 74, name: "Dibi Poulet Sauce Tabaski", price: 4000, desc: "Poulet grillé sauce tabaski", emoji: "🍗" },
   ],
-   repas: [
+  repas: [
     { id: 110, name: "Caldou", price: 800, desc: "Poisson en bouillon léger, riz blanc", emoji: "🍲" },
     { id: 111, name: "Mafé Yapp", price: 1000, desc: "Viande en sauce d'arachide onctueuse", emoji: "🥜" },
     { id: 112, name: "Thieb Dieune", price: 800, desc: "Riz au poisson, légumes mijotés", emoji: "🐟" },
@@ -2560,34 +2600,72 @@ function updateQty(id, delta) {
   renderCartModal();
 }
 
+// ===== PLACE ORDER + WHATSAPP =====
 function placeOrder() {
   const name = document.getElementById('orderName').value.trim();
   const phone = document.getElementById('orderPhone').value.trim();
   if (!name || !phone) { showToast('⚠️ Veuillez renseigner votre nom et téléphone'); return; }
   if (cart.length === 0) { showToast('Votre panier est vide'); return; }
 
+  const address = document.getElementById('orderAddress').value.trim();
+  const notes = document.getElementById('orderNotes').value.trim();
+  const total = cart.reduce((s, i) => s + i.price * i.qty, 0);
+
+  // Sauvegarder la commande localement
   const order = {
     id: nextOrderId++,
-    name, phone,
-    address: document.getElementById('orderAddress').value,
-    notes: document.getElementById('orderNotes').value,
+    name, phone, address, notes,
     items: [...cart],
-    total: cart.reduce((s, i) => s + i.price * i.qty, 0),
+    total,
     status: 'pending',
     date: new Date().toLocaleString('fr-FR'),
     timestamp: Date.now()
   };
-
   orders.unshift(order);
   localStorage.setItem('les_astuces_orders', JSON.stringify(orders));
+  updateAdminStats();
+  renderOrdersTable();
+  sendOrderNotification(order);
+
+  // Construire le message WhatsApp
+  const date = new Date().toLocaleString('fr-FR', { dateStyle: 'short', timeStyle: 'short' });
+  let msg = '';
+  msg += '🍽️ *NOUVELLE COMMANDE — Les Astuces*\n';
+  msg += '━━━━━━━━━━━━━━━━━━━━━\n';
+  msg += `📋 *Commande N°${order.id}*\n`;
+  msg += `📅 ${date}\n`;
+  msg += '━━━━━━━━━━━━━━━━━━━━━\n\n';
+  msg += '👤 *CLIENT*\n';
+  msg += `• Nom : ${name}\n`;
+  msg += `• Téléphone : ${phone}\n`;
+  if (address) msg += `• Adresse : ${address}\n`;
+  msg += '\n🛒 *ARTICLES COMMANDÉS*\n';
+  cart.forEach(item => {
+    msg += `• ${item.emoji} ${item.name} × ${item.qty} = ${(item.price * item.qty).toLocaleString()} FCFA\n`;
+  });
+  msg += '\n';
+  msg += `💰 *TOTAL : ${total.toLocaleString()} FCFA*\n`;
+  if (notes) {
+    msg += `\n📝 *Notes* : ${notes}\n`;
+  }
+  msg += '\n━━━━━━━━━━━━━━━━━━━━━\n';
+  msg += '✅ Merci de confirmer cette commande !';
+
+  // Encoder et ouvrir WhatsApp
+  const encodedMsg = encodeURIComponent(msg);
+  const waUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodedMsg}`;
+
+  // Vider le panier et fermer le modal
   cart = [];
   updateCartBadge();
   closeOrderModal();
-  updateAdminStats();
-  renderOrdersTable();
-  showToast('🎉 Commande passée avec succès ! Nous vous contactons bientôt.');
-  // Notifier l'admin immédiatement
-  sendOrderNotification(order);
+
+  showToast('🎉 Redirection vers WhatsApp...');
+
+  // Ouvrir WhatsApp après un court délai
+  setTimeout(() => {
+    window.open(waUrl, '_blank');
+  }, 500);
 }
 
 // ===== REVIEWS =====
@@ -2631,8 +2709,8 @@ function closeAdminLogin() { document.getElementById('adminLogin').classList.rem
 function doAdminLogin() {
   const user = document.getElementById('adminUser').value.trim();
   const pass = document.getElementById('adminPass').value;
-  const validUser = atob('YWRtaW4=');       // admin
-  const validPass = atob('QXN0dWNlczIwMjY='); // Astuces2026
+  const validUser = atob('YWRtaW4=');
+  const validPass = atob('QXN0dWNlczIwMjY=');
   if (user === validUser && pass === validPass) {
     closeAdminLogin();
     document.getElementById('adminPanel').classList.add('open');
@@ -3028,18 +3106,16 @@ function requestNotificationPermission() {
   } else if (Notification.permission !== 'denied') {
     Notification.requestPermission().then(perm => {
       notifPermission = perm === 'granted';
-      if (notifPermission) showToast('🔔 Notifications activées ! Vous serez alerté à chaque commande.');
+      if (notifPermission) showToast('🔔 Notifications activées !');
       else showToast('❌ Notifications refusées');
     });
   } else {
-    showToast('❌ Notifications bloquées — autorisez-les dans les paramètres du navigateur');
+    showToast('❌ Notifications bloquées — autorisez-les dans les paramètres');
   }
 }
 
 function sendOrderNotification(order) {
-  // Vibration mobile (fonctionne même sans permission notif)
   if (navigator.vibrate) navigator.vibrate([300, 150, 300, 150, 500]);
-  // Notification bureau
   if (!('Notification' in window)) return;
   if (Notification.permission !== 'granted') return;
   try {
@@ -3106,7 +3182,6 @@ function installApp() {
   document.head.appendChild(link);
 })();
 
-// Service Worker pour PWA offline
 if ('serviceWorker' in navigator) {
   const swCode = `
     const CACHE='les-astuces-v1';
@@ -3117,11 +3192,8 @@ if ('serviceWorker' in navigator) {
   navigator.serviceWorker.register(URL.createObjectURL(blob)).catch(()=>{});
 }
 
-// Démarrer le bouton d'installation PWA
 installPWAButton();
-// Rendu des événements au démarrage
 renderEvents();
-
 </script>
 </body>
 </html>
